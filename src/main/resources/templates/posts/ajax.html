@@ -1,0 +1,24 @@
+<!--Page to display the JSONified posts-->
+<!--Uses javascript and ajax get the data and create the needed html-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title>Ajax Post Index</title>
+
+    <div th:replace="fragments :: links" />
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+<h1>Posts</h1>
+<div id="posts"></div>
+
+<div th:replace="fragments :: scripts" />
+<script src="/js/posts.js"></script>
+</body>
+</html>

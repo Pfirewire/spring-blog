@@ -1,0 +1,27 @@
+<!--Template for editing a post-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title>Edit Ad</title>
+
+    <div th:replace="fragments :: links" />
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+<main class="container d-flex justify-content-center">
+    <div class="card w-75 text-center p-3" style="background-color: #6e6e6e;">
+        <form th:action="@{/posts/{id}/edit (id=${post.id})}" th:method="post" th:object="${post}">
+            <div th:replace="fragments :: postForm" />
+        </form>
+    </div>
+</main>
+
+<div th:replace="fragments :: scripts" />
+</body>
+</html>

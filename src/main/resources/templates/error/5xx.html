@@ -1,0 +1,27 @@
+<!--HTML page for displaying all 500 error messages-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title th:text="'Oops, ' + ${error}"></title>
+
+    <div th:replace="fragments :: links" />
+
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+
+<th:block th:switch="${error}">
+    <div th:case="'Internal Server Error'">
+        <h1>Internal Server Error!!</h1>
+    </div>
+</th:block>
+
+<div th:replace="fragments :: scripts" />
+</body>
+</html>

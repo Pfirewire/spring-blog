@@ -1,0 +1,30 @@
+<!--Template for deleting a post-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title>Delete Post</title>
+
+    <div th:replace="fragments :: links" />
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+
+<h1 class="text-center">Are you sure you want to delete this post?</h1>
+<!--Single Post Card-->
+<div class="container">
+    <div th:replace="fragments :: showSinglePost" />
+</div>
+
+<form th:action="@{/posts/{id}/delete (id=${post.id})}" th:method="post" th:object="${post}">
+    <button type="submit" class="btn btn-dark">Delete</button>
+</form>
+
+<div th:replace="fragments :: scripts" />
+</body>
+</html>

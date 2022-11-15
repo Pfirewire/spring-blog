@@ -1,0 +1,130 @@
+<!--Template containing all partials-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+<!--Meta Tags Fragment-->
+<div th:fragment="metaTags" th:remove="tag">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</div>
+
+<!--Links Fragment-->
+<div th:fragment="links" th:remove="tag">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="images/png" th:href="@{/megamanicon.png}">
+<!--    &lt;!&ndash; Font Awesome &ndash;&gt;-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />-->
+<!--    &lt;!&ndash; Google Fonts &ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />-->
+<!--    &lt;!&ndash; MDB &ndash;&gt;-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />-->
+</div>
+
+</head>
+<body>
+
+<!--Navbar Fragment-->
+<nav th:fragment="navbar" id="main-navbar" class="navbar navbar-expand-md w-100 navbar-dark bg-dark mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="d-none d-md-block fs-3 px-4 text-light">springboot exercises</span>
+
+            <button id="navbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span id="collapse-btn">
+                            <i class="bi bi-list"></i>
+                        </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-4">
+                    <li class="nav-item mx-2">
+                        <a href="/posts" class="nav-link fs-5" >All Posts</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="/posts/create" class="nav-link fs-5">Create A Post</a>
+                    </li>
+                    <li class="nav-item mx-2 text-muted">
+                        <a href="/profile" class="nav-link fs-5">Profile</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn nav-link fs-5">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+<!--Header Fragment-->
+<header th:fragment="header" class="container">
+        <hr>
+    </header>
+
+<!--Show Single Post Fragment-->
+<div class="card mb-3" style="background-color: #6e6e6e"  th:fragment="showSinglePost">
+    <div class="card-body">
+        <h2 class="text-center bg-dark text-light rounded p-3">
+            <a th:href="@{/posts/{id}(id=${post.getId()})}" th:text="${post.title}"></a>
+        </h2>
+        <p style="white-space: pre-line" th:text="${post.body}" class="card-text bg-dark text-light rounded p-3"></p>
+        <a th:href="@{/users/{id} (id=${post.user.id})}" class="card-link" th:text="${post.user.username}"></a>
+        <!--                Checking to see if user is authenticated, and if so if user id matches post's user id-->
+        <span sec:authorize="isAuthenticated()">
+            <span th:if="${post.getUserId() == #authentication.principal.id}">
+                <a th:href="@{/posts/{id}/edit (id=${post.id})}">Edit Post</a>
+            </span>
+        </span>
+        <!--                Checking to see if user is authenticated, and if so if user id matches post's user id-->
+        <span sec:authorize="isAuthenticated()">
+            <span th:if="${post.getUserId() == #authentication.principal.id}">
+                <a th:href="@{/posts/{id}/delete (id=${post.id})}">Delete Post</a>
+            </span>
+        </span>
+        <div style="height: 50px; width: 50px;">
+            <img th:src="@{${'/' + post.filename}}" style="max-width: 100%; max-height: 100%;">
+        </div>
+    </div>
+</div>
+
+<!--Post Form Fragment-->
+<div class="form-group" th:fragment="postForm">
+    <input class="form-control mb-3 bg-dark text-light" id="postTitle" th:field="*{title}" type="text">
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
+    <textarea class="form-control mb-3 bg-dark text-light" th:field="*{body}" rows="12" placeholder="Enter the body of your post here" ></textarea>
+    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" />
+    <button type="submit" class="btn btn-dark">Submit</button>
+</div>
+
+<!--Post Index Fragment-->
+<div class="container" th:fragment="postIndex">
+    <div class="row row-cols-md-2" data-masonry='{"percentPosition": true }'>
+<!--    Calling each post in posts and making their own cards, in 2 columns-->
+        <div th:each="post : ${posts}" class="col">
+            <div th:replace="fragments :: showSinglePost" />
+        </div>
+    </div>
+</div>
+
+<!--Scripts Fragment-->
+<div th:fragment="scripts" th:remove="tag">
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!--    &lt;!&ndash; MDB &ndash;&gt;-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>-->
+    <!-- jQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<!--    Masonry Test CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</div>
+</body>
+</html>

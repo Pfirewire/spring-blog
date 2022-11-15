@@ -1,0 +1,33 @@
+<!--HTML page for displaying all 400 error messages-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title th:text="'Oops, ' + ${error}"></title>
+
+    <div th:replace="fragments :: links" />
+
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+
+<th:block th:switch="${error}">
+    <div th:case="'Not Found'">
+        <h1>Page not found!!</h1>
+    </div>
+    <div th:case="'Forbidden'">
+        <h1>You don't have permission to view this page.</h1>
+    </div>
+    <div th:case="'Bad Request'">
+        <h1>Bad Request!!</h1>
+    </div>
+</th:block>
+
+<div th:replace="fragments :: scripts" />
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!--Template showing user profile-->
+<!--At the moment it just shows a list of posts created by the user-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="fragments :: metaTags" />
+
+    <title>Profile</title>
+
+    <div th:replace="fragments :: links" />
+</head>
+<body>
+<nav th:replace="fragments :: navbar" />
+<header th:replace="fragments :: header" />
+
+<h1>My Posts</h1>
+
+<div th:replace="fragments :: postIndex" />
+
+<div th:replace="fragments :: scripts" />
+</body>
+</html>
