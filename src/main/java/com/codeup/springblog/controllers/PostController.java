@@ -1,11 +1,11 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springbootexercises.models.User;
-import com.codeup.springbootexercises.services.EmailService;
-import com.codeup.springbootexercises.repositories.PostRepository;
-import com.codeup.springbootexercises.repositories.UserRepository;
-import com.codeup.springbootexercises.models.Post;
-import com.codeup.springbootexercises.services.FileUploadService;
+import com.codeup.springblog.models.User;
+import com.codeup.springblog.services.EmailService;
+import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.models.Post;
+import com.codeup.springblog.services.FileUploadService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

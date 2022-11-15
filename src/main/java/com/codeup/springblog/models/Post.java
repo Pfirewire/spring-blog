@@ -1,6 +1,6 @@
 package com.codeup.springblog.models;
 
-import com.codeup.springbootexercises.models.User;
+import com.codeup.springblog.models.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.beans.factory.annotation.Value;
 

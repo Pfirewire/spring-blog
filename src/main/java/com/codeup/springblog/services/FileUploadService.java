@@ -1,6 +1,6 @@
 package com.codeup.springblog.services;
 
-import com.codeup.springbootexercises.models.Post;
+import com.codeup.springblog.models.Post;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

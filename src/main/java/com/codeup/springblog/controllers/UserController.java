@@ -1,9 +1,9 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springbootexercises.models.Post;
-import com.codeup.springbootexercises.models.User;
-import com.codeup.springbootexercises.repositories.PostRepository;
-import com.codeup.springbootexercises.repositories.UserRepository;
+import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
+import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
