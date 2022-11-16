@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head">
-    <title id="pageTitle">Roll Dice</title>
+<head>
+    <div th:replace="fragments :: metaTags" />
+    <title>Roll Dice</title>
+    <div th:replace="fragments :: links" />
 </head>
 <body>
     <nav th:replace="fragments :: navbar" />
@@ -14,6 +16,6 @@
     <a href="/roll-dice/5">5</a>
     <a href="/roll-dice/6">6</a>
 
-    <footer th:replace="fragments :: footer" />
+    <div th:replace="fragments :: scripts" />
 </body>
 </html>

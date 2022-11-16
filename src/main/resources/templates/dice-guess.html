@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head">
-    <title id="pageTitle">Dice Guess Results</title>
+<head>
+    <div th:replace="fragments :: metaTags" />
+    <title>Dice Guess Results</title>
+    <div th:replace="fragments :: links" />
 </head>
 <body>
     <nav th:replace="fragments :: navbar" />
@@ -12,6 +14,7 @@
     <h1>Your guess was correct <span th:text="${correctGuesses}"></span> times!</h1>
     <h3><a href="/roll-dice">Try Again</a></h3>
 
-<footer th:replace="fragments :: footer" />
+
+    <div th:replace="fragments :: scripts" />
 </body>
 </html>
