@@ -21,7 +21,7 @@ public class User {
     @Column(nullable = false)
     @JsonIgnore
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @JsonBackReference
     private List<Post> posts;
 
