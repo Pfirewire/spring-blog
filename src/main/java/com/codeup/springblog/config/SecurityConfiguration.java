@@ -16,15 +16,6 @@ public class SecurityConfiguration {
             .and()
                 .authorizeHttpRequests()
                 .antMatchers(
-                        "/",
-                        "/posts",
-                        "/posts/{id}",
-                        "/roll-dice"
-                )
-                .permitAll()
-            .and()
-                .authorizeHttpRequests()
-                .antMatchers(
                         "/posts/create",
                         "/posts/{id}/edit",
                         "/profile",
@@ -32,6 +23,15 @@ public class SecurityConfiguration {
                         "/users/{id}"
                 )
                 .authenticated()
+            .and()
+                .authorizeHttpRequests()
+                .antMatchers(
+                        "/",
+                        "/posts",
+                        "/posts/{id}",
+                        "/roll-dice"
+                )
+                .permitAll()
             .and()
                 .httpBasic()
         ;

@@ -32,19 +32,11 @@ public class User {
         this.username = username;
         this.password = password;
     }
-
     public User (User copy) {
         this.id = copy.id;
         this.email = copy.email;
         this.username = copy.username;
         this.password = copy.password;
-    }
-
-    public User(Long id, String email, String username, String password) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
     }
 
     // Getters and Setters

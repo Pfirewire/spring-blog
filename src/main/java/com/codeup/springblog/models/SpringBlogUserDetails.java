@@ -7,6 +7,9 @@ import java.util.Collection;
 
 public class SpringBlogUserDetails extends User implements UserDetails {
 
+    public SpringBlogUserDetails(User copy) {
+        super(copy);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
