@@ -40,6 +40,12 @@ public class User {
         this.password = copy.password;
     }
 
+    public User(Long id, String email, String username, String password) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 
     // Getters and Setters
     public Long getId() { return this.id; }
