@@ -5,17 +5,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: headFragment('Profile')"></div>
+    <div th:replace="partials :: headFragment('Profile')"></div>
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
-<header th:replace="fragments :: header" />
+<nav th:replace="partials :: navbar" />
+<header th:replace="partials :: header" />
 
 <h1>My Posts</h1>
 
-<div th:replace="fragments :: postIndex" />
+<div th:replace="partials :: postIndex" />
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

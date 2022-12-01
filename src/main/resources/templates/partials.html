@@ -147,6 +147,46 @@
         <hr>
     </header>
 
+<!--Login Form Fragment-->
+<form th:fragment="loginForm" class="text-light" th:action="@{/login}" method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" autocomplete="off">
+    </div>
+    <button id="loginPasswordSubmit" type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<!--Signup Form Fragment-->
+<form th:fragment="signupForm" class="text-light" th:action="@{/signup}" method="POST" th:object="${user}">
+    <div class="mb-3">
+        <label for="signupEmailAddress" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="signupEmailAddress" th:field="*{email}" autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <label for="signupUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="signupUsername" th:field="*{username}" autocomplete="off">
+    </div>
+    <div class="mb-3">
+        <label for="signupPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="signupPassword" th:field="*{password}" autocomplete="off">
+        <div id="signupPasswordHelpLength" class="form-text">Must be at least 8 characters long</div>
+        <div id="signupPasswordHelpUppercaseLetter" class="form-text">Must contain at least 1 uppercase letter</div>
+        <div id="signupPasswordHelpLowercaseLetter" class="form-text">Must contain at least 1 lowercase letter</div>
+        <div id="signupPasswordHelpNumber" class="form-text">Must contain at least 1 number</div>
+        <div id="signupPasswordHelpSpecialCharacters" class="form-text">Must contain at least 1 special character: !@#$%^&*()-=_+</div>
+    </div>
+    <div class="mb-3">
+        <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="signupConfirmPassword">
+        <div id="passwordsMustMatch" class="form-text d-none" style="color: #F00;">Passwords must match</div>
+    </div>
+    <button id="signupPasswordSubmit" type="submit" class="btn btn-primary" disabled>Signup</button>
+</form>
+
 <!--Show Single Post Fragment-->
 <div class="card mb-3" style="background-color: #6e6e6e"  th:fragment="showSinglePost">
     <div class="card-body">
@@ -187,7 +227,7 @@
     <div class="row row-cols-md-2" data-masonry='{"percentPosition": true }'>
 <!--    Calling each post in posts and making their own cards, in 2 columns-->
         <div th:each="post : ${posts}" class="col">
-            <div th:replace="fragments :: showSinglePost" />
+            <div th:replace="partials :: showSinglePost" />
         </div>
     </div>
 </div>

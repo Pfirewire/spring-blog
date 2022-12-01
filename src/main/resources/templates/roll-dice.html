@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments :: metaTags" />
+    <div th:replace="partials :: metaTags" />
     <title>Roll Dice</title>
-    <div th:replace="fragments :: links" />
+    <div th:replace="partials :: links" />
 </head>
 <body>
-    <nav th:replace="fragments :: navbar" />
-    <header th:replace="fragments :: header" />
+    <nav th:replace="partials :: navbar" />
+    <header th:replace="partials :: header" />
 
     <a href="/roll-dice/1">1</a>
     <a href="/roll-dice/2">2</a>
@@ -16,6 +16,6 @@
     <a href="/roll-dice/5">5</a>
     <a href="/roll-dice/6">6</a>
 
-    <div th:replace="fragments :: scripts" />
+    <div th:replace="partials :: scripts" />
 </body>
 </html>

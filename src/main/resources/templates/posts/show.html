@@ -4,18 +4,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: headFragment('Show Post')"></div>
+    <div th:replace="partials :: headFragment('Show Post')"></div>
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
-<header th:replace="fragments :: header" />
+<nav th:replace="partials :: navbar" />
+<header th:replace="partials :: header" />
 
 <!--Single Post Card-->
 <div class="container">
-    <div th:replace="fragments :: showSinglePost" />
+    <div th:replace="partials :: showSinglePost" />
 </div>
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

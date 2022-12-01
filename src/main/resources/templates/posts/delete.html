@@ -4,24 +4,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: headFragment('Delete Post')"></div>
+    <div th:replace="partials :: headFragment('Delete Post')"></div>
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
-<header th:replace="fragments :: header" />
+<nav th:replace="partials :: navbar" />
+<header th:replace="partials :: header" />
 
 
 <h1 class="text-center">Are you sure you want to delete this post?</h1>
 <!--Single Post Card-->
 <div class="container">
-    <div th:replace="fragments :: showSinglePost" />
+    <div th:replace="partials :: showSinglePost" />
 </div>
 
 <form th:action="@{/posts/{id}/delete (id=${post.id})}" th:method="post" th:object="${post}">
     <button type="submit" class="btn btn-dark">Delete</button>
 </form>
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

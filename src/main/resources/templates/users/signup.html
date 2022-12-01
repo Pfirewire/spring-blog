@@ -4,12 +4,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: headFragment('Sign Up')"></div>
+    <div th:replace="partials :: headFragment('Sign Up')"></div>
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
-<header th:replace="fragments :: header" />
+<nav th:replace="partials :: navbar" />
+<header th:replace="partials :: header" />
 
     <h1>Create an account</h1>
     <form th:action="@{/signup}" method="POST" th:object="${user}">
@@ -28,6 +28,6 @@
         <input value="Sign me up!" type="submit" />
     </form>
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

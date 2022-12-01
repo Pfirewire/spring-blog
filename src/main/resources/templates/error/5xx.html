@@ -4,16 +4,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: metaTags" />
+    <div th:replace="partials :: metaTags" />
 
     <title th:text="'Oops, ' + ${error}"></title>
 
-    <div th:replace="fragments :: links" />
+    <div th:replace="partials :: links" />
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
-<header th:replace="fragments :: header" />
+<nav th:replace="partials :: navbar" />
+<header th:replace="partials :: header" />
 
 
 <th:block th:switch="${error}">
@@ -22,6 +22,6 @@
     </div>
 </th:block>
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

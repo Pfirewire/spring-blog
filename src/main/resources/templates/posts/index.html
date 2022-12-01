@@ -4,16 +4,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: headFragment('Post Index')"></div>
+    <div th:replace="partials :: headFragment('Post Index')"></div>
 
 </head>
 <body>
-<nav th:replace="fragments :: navbar" />
+<nav th:replace="partials :: navbar" />
 
-<header th:replace="fragments :: header" />
+<header th:replace="partials :: header" />
 
-<div th:replace="fragments :: postIndex" />
+<div th:replace="partials :: postIndex" />
 
-<div th:replace="fragments :: scripts" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>
