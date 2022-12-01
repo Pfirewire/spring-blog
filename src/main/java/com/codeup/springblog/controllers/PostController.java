@@ -56,7 +56,7 @@ public class PostController {
             return "redirect:/posts";
         }
         // Sets individual post by id parameter, passes it to template
-        Post post = postDao.getById(id);
+        Post post = postDao.findById(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
@@ -104,7 +104,7 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String showEditPostForm(@PathVariable Long id, Model model) {
         // Setting post by id in URL path and passes it to template
-        Post post = postDao.getById(id);
+        Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
         return "posts/edit";
     }
@@ -139,7 +139,7 @@ public class PostController {
     @GetMapping("/posts/{id}/delete")
     public String showDeletePost(@PathVariable Long id, Model model) {
         // Sets post by id in URL path, sends post to template
-        Post post = postDao.getById(id);
+        Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
         return"/posts/delete";
     }

@@ -17,7 +17,7 @@ public class Post {
     // All private variables, attached to posts table
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "Post must have a title")
     @Size(min = 3, message = "Title must be at least 3 characters")
