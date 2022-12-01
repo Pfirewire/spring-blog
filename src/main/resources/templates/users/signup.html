@@ -11,23 +11,13 @@
 <nav th:replace="partials :: navbar" />
 <header th:replace="partials :: header" />
 
-    <h1>Create an account</h1>
-    <form th:action="@{/signup}" method="POST" th:object="${user}">
-        <label for="username">Username</label>
-        <input id="username" th:field="*{username}" autocomplete="off" />
+<h1 class="text-center pt-5 my-5 outlined">Sign Up</h1>
 
-        <label for="email">Email</label>
-        <input id="email" th:field="*{email}" autocomplete="off" />
-
-        <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" />
-
-        <label for="confirmPassword">Confirm Password</label>
-        <input id="confirmPassword" name="confirmPassword" type="password" />
-
-        <input value="Sign me up!" type="submit" />
-    </form>
+<div class="container bg-dark rounded-3 p-5">
+    <div th:replace="partials :: signupForm" />
+</div>
 
 <div th:replace="partials :: scripts" />
+<script th:src="@{/js/signup-form.js}"></script>
 </body>
 </html>
