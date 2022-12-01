@@ -4,11 +4,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: metaTags" />
+    <div th:replace="fragments :: headFragment('Delete Post')"></div>
+<!--    <div th:replace="fragments :: metaTags" />-->
 
-    <title>Delete Post</title>
+<!--    <title>Delete Post</title>-->
 
-    <div th:replace="fragments :: links" />
+<!--    <div th:replace="fragments :: links" />-->
 </head>
 <body>
 <nav th:replace="fragments :: navbar" />

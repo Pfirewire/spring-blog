@@ -4,11 +4,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <div th:replace="fragments :: metaTags" />
+    <div th:replace="fragments :: headFragment('Post Index')"></div>
+<!--    <div th:replace="fragments :: metaTags" />-->
 
-    <title>Post Index</title>
+<!--    <title>Post Index</title>-->
 
-    <div th:replace="fragments :: links" />
+<!--    <div th:replace="fragments :: links" />-->
 </head>
 <body>
 <nav th:replace="fragments :: navbar" />
