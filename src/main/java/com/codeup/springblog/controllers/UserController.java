@@ -64,7 +64,7 @@ public class UserController {
         List<Post> userPosts = new ArrayList<>();
 
         // Setting user to currently logged in user
-        User user = Utils.currentUser();
+        User user = userDao.findById(Utils.currentUserId()).get();
 
         // Iterates through all posts and adds to new list if created by logged in user
         for(Post post : allPosts) {

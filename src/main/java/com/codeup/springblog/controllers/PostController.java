@@ -86,7 +86,7 @@ public class PostController {
         }
 
         // Sets the user of the post to be the logged in user, uploads the file in the form, then saves post into table
-        post.setUser(Utils.currentUser());
+        post.setUser(userDao.findById(Utils.currentUserId()).get());
         postDao.save(post);
         fileUploadService.uploadFile(uploadedFile, post, model);
         postDao.save(post);
@@ -107,7 +107,7 @@ public class PostController {
     public String showEditPostForm(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
         // check if user is owner of post
-        if(!post.getUser().equals(Utils.currentUser())) {
+        if(!post.getUser().equals(userDao.findById(Utils.currentUserId()).get())) {
             return "redirect:/posts";
         }
         // Setting post by id in URL path and passes it to template
@@ -126,7 +126,7 @@ public class PostController {
         }
 
         // Sets post user by who is logged in at the time
-        post.setUser(Utils.currentUser());
+        post.setUser(userDao.findById(Utils.currentUserId()).get());
         postDao.save(post);
 
         // Using emailService to send email of edited post
