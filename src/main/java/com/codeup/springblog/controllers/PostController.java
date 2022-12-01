@@ -6,6 +6,7 @@ import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.services.FileUploadService;
+import com.codeup.springblog.utils.Utils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +86,8 @@ public class PostController {
         }
 
         // Sets the user of the post to be the logged in user, uploads the file in the form, then saves post into table
-        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        post.setUser(Utils.currentUser());
+        postDao.save(post);
         fileUploadService.uploadFile(uploadedFile, post, model);
         postDao.save(post);
 
@@ -103,8 +105,12 @@ public class PostController {
     // Shows form to edit a post
     @GetMapping("/posts/{id}/edit")
     public String showEditPostForm(@PathVariable Long id, Model model) {
-        // Setting post by id in URL path and passes it to template
         Post post = postDao.findById(id).get();
+        // check if user is owner of post
+        if(!post.getUser().equals(Utils.currentUser())) {
+            return "redirect:/posts";
+        }
+        // Setting post by id in URL path and passes it to template
         model.addAttribute("post", post);
         return "posts/edit";
     }
@@ -120,7 +126,7 @@ public class PostController {
         }
 
         // Sets post user by who is logged in at the time
-        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        post.setUser(Utils.currentUser());
         postDao.save(post);
 
         // Using emailService to send email of edited post

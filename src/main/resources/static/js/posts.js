@@ -2,6 +2,8 @@
 // This is very rudimentary and would have to be expanded upon with stying to be useful
 
 $(() => {
+    console.log("Testing devtools");
+
     let request = $.ajax({'url': '/posts.json'});
     request.done(posts => {
         let html = '';

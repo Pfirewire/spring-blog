@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.utils.Utils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class UserController {
         List<Post> userPosts = new ArrayList<>();
 
         // Setting user to currently logged in user
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = Utils.currentUser();
 
         // Iterates through all posts and adds to new list if created by logged in user
         for(Post post : allPosts) {
