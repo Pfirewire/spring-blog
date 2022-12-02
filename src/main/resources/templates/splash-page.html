@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="partials :: headFragment('Spring Blog')"></div>
+    <link rel="stylesheet" th:href="@{/css/splash-page.css}">
+
+</head>
+<body>
+<nav th:replace="partials :: navbar" />
+
+<header th:replace="partials :: header" />
+
+<h1>Welcome to Pfirewire's Spring Blog!</h1>
+
+<div th:replace="partials :: scripts" />
+</body>
+</html>

@@ -11,6 +11,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String landingPage() {
-        return "redirect:/posts";
+        return "splash-page";
     }
 }
